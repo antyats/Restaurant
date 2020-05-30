@@ -8,7 +8,7 @@
             <img src="../assets/images/food.png"/>
         </div>
         <div class="home_container_time">
-            <h1 class="home_container_time-numbers">9:00 до 0:00</h1>
+            <h1 class="home_container_time-numbers number">9:00 до 0:00</h1>
             <h1>Каждый день</h1>
         </div>
     </div>
@@ -23,36 +23,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap');
 
 .home_container {
-    margin: 3rem auto;
+    margin: 0 auto;
     width: 60%;
-    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     &_address {
+        margin-top: 10rem;
         text-align: center;
         font-size: 1.5rem;
     }
 
     &_photo {
+        margin-top: 4rem;
         background-size: cover;
-        height: 40rem;
-
-        & > img {
-            height: 100%;
-        }
+        height: 60rem;
+        position: relative;
     }
 
     &_time {
         text-align: center;
         font-size: 1.3rem;
-        &-numbers {
-            font-family: 'Balsamiq Sans', cursive;
-        }
+        margin-top: 5rem;
     }
 }
 </style>

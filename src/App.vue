@@ -1,66 +1,73 @@
 <template>
-  <div id="app">
-    <div class="container">
-        <Header />
-        <transition name="fade">
-          <router-view />
-        </transition>
-        <Footer />
+    <div id="app">
+        <div class="container">
+            <Header/>
+            <transition name="fade">
+                <router-view/>
+            </transition>
+            <Footer/>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-import Header from './components/Header'
-import Footer from './components/Footer'
+    import Header from './components/Header'
+    import Footer from './components/Footer'
 
-export default {
-  name: 'App',
-  components: {
-    Header,
-    Footer
-  }
-}
+    export default {
+        name: 'App',
+        components: {
+            Header,
+            Footer
+        }
+    }
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap');
 
-html {
-  box-sizing: border-box;
-}
+    html {
+        box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-size: 62.5%;
-}
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 62.5%;
+    }
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #000;
-  height: 270vh;
-  background-color: #ffcd38;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  font-family: 'Piedra', cursive;
-}
+    #app {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #000;
+        height: 246vh;
+        background-color: #ffcd38;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Piedra', cursive;
+    }
 
-.container {
-    background-color: #ffffff;
-    width: 97%;
-    height: 97%;
-}
+    .container {
+        background-color: #ffffff;
+        width: 97%;
+        height: 97%;
+    }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
-  opacity: 0;
-}
+    .number {
+        font-family: 'Balsamiq Sans', cursive;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .3s;
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */
+    {
+        opacity: 0;
+    }
 
 </style>
