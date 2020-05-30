@@ -13,6 +13,10 @@ export default new Router({
         {
             path: '/menu',
             component: () => import('./components/Menu')
+        },
+        {
+            path: '/booking',
+            component: () => import('./components/Booking')
         }
     ]
 })

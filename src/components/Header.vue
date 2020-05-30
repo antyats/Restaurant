@@ -7,15 +7,12 @@
             <router-link to='/menu'>
                 <h5>Меню</h5>
             </router-link>
-            <router-link to='/chef'>
-                <h5>Шеф</h5>
-            </router-link>
         </div>
         <div>
             <img class="header_block_logo" src="../assets/images/logo.png" />
         </div>
         <div class="header_block header_block-right">
-            <router-link to='/'>
+            <router-link to='/booking'>
                 <h5>Забронировать столик</h5>
             </router-link>
             <router-link to='/'>
@@ -44,10 +41,10 @@ export default {
         display: flex;
         padding-left: 3rem;
         padding-right: 5rem;
-        
+
         &-left {
             & > a {
-                font-size: 1rem;
+                font-size: 1.3rem;
                 padding-left: 1rem;
                 color: black;
                 text-decoration: none;
@@ -56,7 +53,7 @@ export default {
         &-right {
             justify-content: flex-end;
             & > a {
-                font-size: 1rem;
+                font-size: 1.2rem;
                 padding-left: 1rem;
                 color: black;
                 text-decoration: none;

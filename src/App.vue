@@ -37,6 +37,15 @@
         font-size: 62.5%;
     }
 
+    body::-webkit-scrollbar {
+        width: 10px;
+        background-color: #ffcd38;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #4a4a4a;
+    }
+
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;

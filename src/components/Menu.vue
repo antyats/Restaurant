@@ -2,7 +2,7 @@
     <div class="menu_container">
         <h1 class="menu_container_heading">Салаты</h1>
         <div class="menu_container_block menu_container_block-half">
-            <div class="menu_container_block-item">
+            <div class="menu_container_block-item" >
                 <div class="menu_container_block-item-row">
                     <h4>Салат с семгой и микс салатом</h4>
                     <h4 class="number">550Р</h4>
@@ -219,12 +219,19 @@
                 </div>
             </div>
         </div>
+        <div class="food_photo" ref="foodPhoto"></div>
     </div>
 </template>
 
 <script>
+    import { gsap } from 'gsap'
     export default {
-        name: "Menu"
+        name: "Menu",
+        methods: {
+            openFood: function() {
+                gsap.to(this.$refs.foodPhoto, { duration: .3, opacity: 1})
+            }
+        }
     }
 </script>
 
@@ -233,6 +240,7 @@
         width: 80%;
         margin: 0 auto;
         margin-top: 5rem;
+        position: relative;
 
         &_heading {
             font-size: 2rem;
@@ -272,6 +280,16 @@
                     grid-row: 3 / 4;
                 }
             }
+        }
+        .food_photo {
+            width: 30rem;
+            height: 15rem;
+            background-color: rgba(red, .3);
+            position: fixed;
+            top: 20%;
+            left: 73%;
+            opacity: 0;
+            display: none;
         }
     }
 </style>

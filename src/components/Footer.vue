@@ -13,7 +13,7 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link to='/'>
+                    <router-link to='/booking'>
                         <h4>Забронировать столик</h4>
                     </router-link>
                 </li>
