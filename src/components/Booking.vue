@@ -7,10 +7,14 @@
             </li>
             <li>
                 <div class="seat selected"></div>
+                <h4>Выбраны</h4>
+            </li>
+            <li>
+                <div class="seat occupied"></div>
                 <h4>Заняты</h4>
             </li>
         </ul>
-        <div class="booking_container_seats">
+        <div class="booking_container_seats" @click="chooseSeat">
             <div class="booking_container_seats_screen"></div>
             <div class="booking_container_seats_screen-description"><h5>Сцена</h5></div>
             <div class="booking_container_seats_row">
@@ -40,13 +44,17 @@
         </div>
         <form class="booking_container_form" @submit.prevent="submitForm">
             <label for="name" class="booking_container_form-label">Ваше имя</label>
-            <input type="text" id="name" name="name" class="booking_container_form-text" v-model.trim="name" :class="{invalid: !$v.name.required}"/>
+            <input type="text" id="name" name="name" class="booking_container_form-text" v-model.trim="name"
+                   :class="{invalid: !$v.name.required}"/>
             <small v-if="$v.name.$dirty && !$v.name.required">Нужно ввести имя</small>
             <label for="email" class="booking_container_form-label">Ваша почта</label>
             <input type="text" id="email" name="email" class="booking_container_form-text" v-model.trim="email"/>
             <small v-if="$v.email.$dirty && !$v.email.required">Нужно ввести корректную почту</small>
-            <label for="guests" class="booking_container_form-label booking_container_form-label">Количество гостей</label>
-            <input type="number" name="guests" id="guests" class="booking_container_form-text-count" v-model.trim="guests"/>
+            <label for="guests" class="booking_container_form-label booking_container_form-label">Количество
+                гостей</label>
+            <input type="number" name="guests" id="guests" class="booking_container_form-text-count"
+                   v-model.trim="guests" :class="{invalid: $v.guests.dirty && !v.guests.minValue}" min="1" max="5"/>
+            <small v-if="$v.guests.$dirty && !$v.guests.maxValue">Гостей может быть 5 человек</small>
             <label for="time" class="booking_container_form-label">Во сколько прийдете?</label>
             <select id="time" class="booking_container_form-selection">
                 <option>16:00</option>
@@ -60,7 +68,8 @@
 </template>
 
 <script>
-    import { email, required, minLength } from 'vuelidate/lib/validators'
+    import {email, required, minValue, maxValue} from 'vuelidate/lib/validators'
+
     export default {
         name: "Booking",
         data() {
@@ -68,12 +77,23 @@
                 name: '',
                 email: '',
                 guests: 1,
+                selectedSeats: []
             }
         },
         validations: {
             name: {required},
             email: {email, required},
-            guests: {required, minLength}
+            guests: {required, minValue: minValue(1), maxValue: maxValue(5)}
+        },
+        mounted: function () {
+            const occupiedSeats = JSON.parse(localStorage.getItem('OccupiedSeats'));
+            if (occupiedSeats) {
+                [...document.querySelectorAll('.booking_container_seats_row .seat:not(.selected)')].forEach((seat, idx) => {
+                    if (occupiedSeats.indexOf(idx) > -1) {
+                        seat.classList.add('occupied');
+                    }
+                })
+            }
         },
         methods: {
             submitForm: function () {
@@ -81,7 +101,19 @@
                     this.$v.$touch();
                     return ''
                 }
+                this.selectedSeats = [...document.querySelectorAll('.booking_container_seats_row .seat.occupied')];
+                const selectedSeatsIdx = this.selectedSeats.map(seat => [...document.querySelectorAll('.booking_container_seats_row .seat:not(.selected)')].indexOf(seat));
+                localStorage.setItem('OccupiedSeats', JSON.stringify(selectedSeatsIdx));
+
                 this.$router.push('/qr-code');
+            },
+            chooseSeat: function (e) {
+                console.log();
+                if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
+                    e.target.classList.toggle('selected');
+                } else if (e.target.classList.contains(('seat'))) {
+                    e.target.classList.toggle(('selected'));
+                }
             }
         }
     }
@@ -120,6 +152,7 @@
                 justify-content: center;
             }
         }
+
         &_form {
             width: 50%;
             display: flex;
@@ -181,8 +214,9 @@
             }
         }
     }
+
     .options_examples {
-        width: 28rem;
+        width: 40rem;
         height: 6rem;
         border: 2px solid #ffcd38;
         list-style-type: none;
@@ -207,6 +241,7 @@
             }
         }
     }
+
     .seat {
         width: 4rem;
         height: 4rem;
@@ -216,7 +251,12 @@
         cursor: pointer;
     }
 
+    .occupied {
+        background-color: #4a4a4a !important;
+        pointer-events: none;
+    }
+
     .selected {
-        background-color: #4a4a4a!important;
+        background-color: rebeccapurple !important;
     }
 </style>
