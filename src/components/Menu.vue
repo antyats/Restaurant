@@ -249,8 +249,7 @@
 
         &_block {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-            grid-template-rows: min-content min-content min-content;
+            grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
             grid-column-gap: 5rem;
 
             &-half {
@@ -273,11 +272,9 @@
                 }
 
                 &-second_row {
-                    grid-row: 2 / 3;
                 }
 
                 &-third_row {
-                    grid-row: 3 / 4;
                 }
             }
         }

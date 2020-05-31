@@ -1,29 +1,22 @@
 <template>
     <footer class="footer">
-        <div class="footer_links">
-            <ul>
-                <li>
-                    <router-link to='/menu'>
-                        <h4>Меню</h4>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to='/chef'>
-                        <h4>Шеф</h4>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to='/booking'>
-                        <h4>Забронировать столик</h4>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to='/'>
-                        <h4>Как нас найти?</h4>
-                    </router-link>
-                </li>
-            </ul>
-        </div>
+        <ul class="footer_links">
+            <li>
+                <router-link to='/menu'>
+                    <h4>Меню</h4>
+                </router-link>
+            </li>
+            <li>
+                <router-link to='/booking'>
+                    <h4>Забронировать столик</h4>
+                </router-link>
+            </li>
+            <li>
+                <router-link to='/geolocation'>
+                    <h4>Как нас найти?</h4>
+                </router-link>
+            </li>
+        </ul>
         <div class="footer_number number">
             <h3>+ 123 456 789</h3>
         </div>
@@ -47,8 +40,7 @@ export default {
     justify-content: center;
 
     &_links {
-        & > ul {
-            display: flex;
+        display: flex;
 
             & > li {
                 font-size: 1.5rem;
@@ -57,6 +49,7 @@ export default {
 
             & > li:first-of-type {
                 list-style: none;
+                margin-left: 0;
             }
 
             & > li > a {
@@ -69,7 +62,6 @@ export default {
                     font-size: 2rem;
                 }
             }
-        }
     }
 
     &_number {
@@ -79,7 +71,18 @@ export default {
             font-weight: 200;
         }
     }
-
 }
+
+    @media (max-width: 1500px) {
+        .footer {
+            height: 10%;
+
+            &_links {
+                & > li > a > h4{
+                    font-size: 1.3rem;
+                }
+            }
+        }
+    }
 
 </style>

@@ -51,7 +51,6 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #000;
-        height: 246vh;
         background-color: #ffcd38;
         display: flex;
         justify-content: center;

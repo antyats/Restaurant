@@ -17,6 +17,10 @@ export default new Router({
         {
             path: '/booking',
             component: () => import('./components/Booking')
+        },
+        {
+            path: '/geolocation',
+            component: () => import('./components/Geolocation')
         }
     ]
 })

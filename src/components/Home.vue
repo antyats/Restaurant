@@ -39,8 +39,11 @@ export default {
     &_photo {
         margin-top: 4rem;
         background-size: cover;
-        height: 60rem;
         position: relative;
+        & > img {
+            width: 100%;
+            height: 100%;
+        }
     }
 
     &_time {
@@ -49,4 +52,24 @@ export default {
         margin-top: 5rem;
     }
 }
+
+    @media (max-width: 1500px) {
+        .home_container {
+            &_address {
+                margin-top: 5rem;
+            }
+            &_photo {
+                & > img {
+                    width: 43rem;
+                }
+            }
+            &_time {
+                margin-top: 0;
+            }
+        }
+    }
+
+    @media (max-width: 1000px) {
+
+    }
 </style>
